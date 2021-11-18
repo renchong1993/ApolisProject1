@@ -31,6 +31,19 @@
         <item name="android:textSize">@dimen/regular_textsize_spash</item>
         <item name="android:textStyle">italic|bold</item>
     </style>
+
     <string name="textview_italic_splash">Splash!</string>
     <dimen name="regular_textsize_spash">65sp</dimen>
+
+    <style name="Theme.DbayProject.Fullscreen" parent="Theme.DbayProject">
+        <item name="android:actionBarStyle">@style/Widget.Theme.DbayProject.ActionBar.Fullscreen
+        </item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <style name="ThemeOverlay.DbayProject.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+    </style>
 </resources>

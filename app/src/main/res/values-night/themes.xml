@@ -19,4 +19,9 @@
     <style name="signup_box"></style>
 
     <style name="SplashView"></style>
+
+    <style name="ThemeOverlay.DbayProject.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_900</item>
+        <item name="fullscreenTextColor">@color/light_blue_A400</item>
+    </style>
 </resources>

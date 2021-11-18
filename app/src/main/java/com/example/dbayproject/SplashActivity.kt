@@ -3,7 +3,9 @@ package com.example.dbayproject
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.animation.AnimationUtils
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.dbayproject.databinding.ActivitySplashBinding
 import com.example.dbayproject.register.ui.RegisterActivity
 
@@ -11,6 +13,7 @@ class SplashActivity : AppCompatActivity() {
 
 
     lateinit var binding: ActivitySplashBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,5 +32,11 @@ class SplashActivity : AppCompatActivity() {
             }
         }
 
+
+        startActivity(Intent(baseContext, RegisterActivity::class.java))
+
     }
+
+
+
 }
