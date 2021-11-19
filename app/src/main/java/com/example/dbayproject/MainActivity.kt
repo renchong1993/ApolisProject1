@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val sharedPreferences = getSharedPreferences("LoginSP", Context.MODE_PRIVATE)
 
-        binding.uservalue.text =
-            "Welcome to home " + sharedPreferences.getString("firstName", "Default")
+//        binding.uservalue.text =
+//            "Welcome to home " + sharedPreferences.getString("firstName", "Default")
         actionBarToggle = ActionBarDrawerToggle(this, binding.drawerLayout, 0, 0)
         binding.drawerLayout.addDrawerListener(actionBarToggle)
 
@@ -45,6 +45,9 @@ class MainActivity : AppCompatActivity() {
             binding.drawerLayout.closeDrawers()
 
             when (menuItem.itemId) {
+                R.id.shoppingcart -> {
+//                    startActivity(Intent(this, CartActivity::class.java))
+                }
                 R.id.profile -> {
 //                    startActivity(Intent(this, ProfileActivity::class.java))
                 }
@@ -66,6 +69,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.shoppingcart -> {
+//                    startActivity(Intent(this, CartActivity::class.java))
+                return true
+            }
             R.id.profile -> {
 //                    startActivity(Intent(this, ProfileActivity::class.java))
                 return true

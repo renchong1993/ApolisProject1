@@ -15,4 +15,5 @@
     <string name="orderhistory">Order History</string>
     <string name="logout">Log Out</string>
     <string name="home">HOME</string>
+    <string name="shopping_cart">Cart</string>
 </resources>
