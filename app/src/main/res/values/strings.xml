@@ -10,4 +10,9 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="signin">Sign In</string>
     <string name="signup">Create Account</string>
+    <string name="profile">Profile</string>
+    <string name="shop">Shop</string>
+    <string name="orderhistory">Order History</string>
+    <string name="logout">Log Out</string>
+    <string name="home">HOME</string>
 </resources>

@@ -9,7 +9,7 @@ interface LogInContract {
     }
 
     interface Presenter{
-        fun onButtenClick(email:String, pw:String)
+        fun onButtonClick(email:String, pw:String)
     }
 
 }

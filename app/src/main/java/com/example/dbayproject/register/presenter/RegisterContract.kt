@@ -10,7 +10,7 @@ interface RegisterContract {
 
     interface Presenter{
 
-        fun onButtenClick(name: String, mobile: String, email:String, pw:String)
+        fun onButtonClick(name: String, mobile: String, email:String, pw:String)
     }
 
 

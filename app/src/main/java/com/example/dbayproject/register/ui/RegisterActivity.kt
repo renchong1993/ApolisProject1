@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.dbayproject.databinding.ActivityRegisterBinding
-import com.example.dbayproject.login.presenter.LogInUtils
 import com.example.dbayproject.login.ui.LoginActivity
 import com.example.dbayproject.register.presenter.RegisterContract
 import com.example.dbayproject.register.presenter.RegisterPresenter
@@ -32,7 +31,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContract.View {
             val pw = edittextPassword.text.toString()
 
             buttonSignup.setOnClickListener {
-                presenter.onButtenClick(name,mobile,email,pw)
+                presenter.onButtonClick(name,mobile,email,pw)
             }
 
             textviewRegiSignin.setOnClickListener {

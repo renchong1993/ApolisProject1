@@ -30,7 +30,8 @@ class LoginActivity : AppCompatActivity() {
             val pw = edittextPassword.text.toString()
 
             buttonLogin.setOnClickListener {
-                presenter.onButtenClick(email,pw)
+//                presenter.onButtonClick(email,pw)
+                startActivity(Intent(LogInUtils.context, MainActivity::class.java))
             }
 
             buttonRegister.setOnClickListener {
