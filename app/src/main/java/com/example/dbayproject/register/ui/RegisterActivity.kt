@@ -1,15 +1,17 @@
 package com.example.dbayproject.register.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import com.example.dbayproject.R
 import com.example.dbayproject.databinding.ActivityRegisterBinding
-import com.example.dbayproject.register.presenter.Contract
+import com.example.dbayproject.login.presenter.LogInUtils
+import com.example.dbayproject.login.ui.LoginActivity
+import com.example.dbayproject.register.presenter.RegisterContract
 import com.example.dbayproject.register.presenter.RegisterPresenter
-import com.example.dbayproject.register.presenter.Utils
+import com.example.dbayproject.register.presenter.RegisterUtils
 
-class RegisterActivity : AppCompatActivity(), Contract.View {
+
+class RegisterActivity : AppCompatActivity(), RegisterContract.View {
 
     lateinit var binding: ActivityRegisterBinding
     lateinit var presenter: RegisterPresenter
@@ -19,7 +21,7 @@ class RegisterActivity : AppCompatActivity(), Contract.View {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
-        Utils.setMyContext(this)
+        RegisterUtils.setMyContext(this)
 
         presenter = RegisterPresenter()
 
@@ -28,12 +30,18 @@ class RegisterActivity : AppCompatActivity(), Contract.View {
             val mobile = edittextMobile.text.toString()
             val email = edittextEmail.text.toString()
             val pw = edittextPassword.text.toString()
+
             buttonSignup.setOnClickListener {
                 presenter.onButtenClick(name,mobile,email,pw)
             }
-        }
 
+            textviewRegiSignin.setOnClickListener {
+                    startActivity(Intent(RegisterUtils.context, LoginActivity::class.java))
+                }
+            }
     }
+
+
 
     override fun ShowError(error: String) {
         TODO("Not yet implemented")

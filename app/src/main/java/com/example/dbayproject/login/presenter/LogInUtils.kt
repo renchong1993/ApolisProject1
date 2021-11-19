@@ -1,8 +1,8 @@
-package com.example.dbayproject.register.presenter
+package com.example.dbayproject.login.presenter
 
 import android.content.Context
 
-class Utils {
+class LogInUtils {
     companion object {
         lateinit var context: Context
 

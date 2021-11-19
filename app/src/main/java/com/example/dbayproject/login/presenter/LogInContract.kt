@@ -1,17 +1,15 @@
-package com.example.dbayproject.register.presenter
+package com.example.dbayproject.login.presenter
 
 import com.example.dbayproject.register.model.RegisterRepository
 import com.example.dbayproject.register.ui.RegisterActivity
 
-interface Contract {
+interface LogInContract {
     interface View{
         fun ShowError(error:String)
     }
 
     interface Presenter{
-
-        fun onButtenClick(name: String, mobile: String, email:String, pw:String)
+        fun onButtenClick(email:String, pw:String)
     }
-
 
 }

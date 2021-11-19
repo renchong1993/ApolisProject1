@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.view.ActionMode
 import android.view.animation.AnimationUtils
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.dbayproject.databinding.ActivitySplashBinding
@@ -27,15 +28,24 @@ class SplashActivity : AppCompatActivity() {
 
 
             textviewDemo.setOnClickListener{
-                val intent = Intent(this@SplashActivity, RegisterActivity::class.java)
-                startActivity(intent)
+
             }
         }
 
+        val handler: Handler = Handler()
+        val run = object : Runnable {
+            override fun run() {
+                Intent(this@SplashActivity, RegisterActivity::class.java)
+                handler.postDelayed(this, 4000)// 4 seconds
+            }
 
-        startActivity(Intent(baseContext, RegisterActivity::class.java))
-
+        }
+        handler.post(run)
     }
+
+//        Handler().postDelayed(toNext(), 3000)
+
+//        startActivity(Intent(baseContext, RegisterActivity::class.java))
 
 
 

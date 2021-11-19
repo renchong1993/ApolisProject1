@@ -4,37 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".register.ui.RegisterActivity"
+    tools:context=".login.ui.LoginActivity"
     android:padding="@dimen/mid_padding">
 
-
     <TextView
-        android:id="@+id/textview_create_account"
+        android:id="@+id/textview_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/creat_account"
+        android:text="@string/signin"
         android:gravity="center"
         style="@style/user_title"
         android:layout_marginTop="@dimen/big_margin"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <EditText
-        android:id="@+id/edittext_firstname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/first_name"
-        android:layout_marginTop="@dimen/big_margin"
-        style="@style/signup_box"
-        app:layout_constraintTop_toBottomOf="@+id/textview_create_account"/>
 
-    <EditText
-        android:id="@+id/edittext_mobile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/mobile"
-        android:layout_marginTop="@dimen/big_margin"
-        style="@style/signup_box"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_firstname"/>
 
     <EditText
         android:id="@+id/edittext_email"
@@ -44,38 +27,43 @@
         android:inputType="textEmailAddress"
         android:layout_marginTop="@dimen/big_margin"
         style="@style/signup_box"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_mobile"/>
+        app:layout_constraintTop_toBottomOf="@+id/textview_login"/>
 
     <EditText
         android:id="@+id/edittext_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/password"
-        android:layout_marginTop="@dimen/big_margin"
         style="@style/signup_box"
         app:layout_constraintTop_toBottomOf="@+id/edittext_email"/>
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_signup"
+        android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
+        android:text="@string/signin"
         android:layout_marginTop="@dimen/big_margin"
         app:layout_constraintTop_toBottomOf="@+id/edittext_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/signup"
+        android:layout_marginTop="@dimen/big_margin"
+        app:layout_constraintTop_toBottomOf="@+id/button_login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <TextView
-        android:id="@+id/textview_regi_signin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Already Have An Account?"
+        android:text="Forget Password?"
         app:layout_constraintBottom_toBottomOf="parent"
         android:gravity="center"
         android:layout_marginBottom="@dimen/big_margin"/>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

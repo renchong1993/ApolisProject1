@@ -5,8 +5,8 @@ import android.widget.Toast
 import com.android.volley.RequestQueue
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
-import com.example.dbayproject.register.presenter.Contract
-import com.example.dbayproject.register.presenter.Utils
+import com.android.volley.toolbox.Volley
+import com.example.dbayproject.register.presenter.RegisterUtils
 import org.json.JSONObject
 import java.net.URLEncoder
 
@@ -21,6 +21,7 @@ class RegisterRepository {
         val email = URLEncoder.encode(email, "UTF-8")
         val pw = URLEncoder.encode(pw, "UTF-8")
 
+        queue = Volley.newRequestQueue(RegisterUtils.context)
 
         val requestData = "firstName=$name&email=$email&password=$pw&mobile=$mobile"
 
@@ -37,16 +38,27 @@ class RegisterRepository {
                 val status = json.getInt("status")
                 val msg = json.getString("message")
 
-                Toast.makeText(Utils.context, msg, Toast.LENGTH_SHORT).show()
+                Toast.makeText(RegisterUtils.context, msg, Toast.LENGTH_SHORT).show()
             },
             {
                     error: VolleyError ->
                 error.printStackTrace()
-                Toast.makeText(Utils.context, "Error: $error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(RegisterUtils.context, "Error: $error", Toast.LENGTH_SHORT).show()
             }
         ){
-            override fun getBody(): ByteArray {
-                return requestData.toByteArray()
+//            override fun getBody(): ByteArray {
+//                return requestData.toByteArray()
+//            }
+
+
+            override fun getHeaders(): MutableMap<String, String> {
+                val valueMap = mutableMapOf<String, String>()
+                valueMap.put("firstName", name)
+                valueMap.put("email", email)
+                valueMap.put("mobile", mobile)
+                valueMap.put("password", pw)
+
+                return valueMap
             }
         }
 
