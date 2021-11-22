@@ -4,10 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.ActionMode
 import android.view.animation.AnimationUtils
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.dbayproject.databinding.ActivitySplashBinding
+import com.example.dbayproject.login.ui.LoginActivity
 import com.example.dbayproject.register.ui.RegisterActivity
 
 class SplashActivity : AppCompatActivity() {
@@ -27,26 +29,21 @@ class SplashActivity : AppCompatActivity() {
             textviewDemo.startAnimation(animation)
 
 
-            textviewDemo.setOnClickListener{
+            textviewDemo.setOnClickListener {
 
             }
         }
 
-        val handler: Handler = Handler()
-        val run = object : Runnable {
-            override fun run() {
-                Intent(this@SplashActivity, RegisterActivity::class.java)
-                handler.postDelayed(this, 4000)// 4 seconds
-            }
+        Handler().postDelayed({
+            // This method will be executed once the timer is over
+            // Start your app main activity
 
-        }
-        handler.post(run)
+            startActivity(Intent(this, LoginActivity::class.java))
+
+            // close this activity
+            finish()
+        }, 3000)
+
     }
-
-//        Handler().postDelayed(toNext(), 3000)
-
-//        startActivity(Intent(baseContext, RegisterActivity::class.java))
-
-
 
 }

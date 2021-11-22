@@ -9,18 +9,28 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import com.example.dbayproject.databinding.ActivityMainBinding
+import com.example.dbayproject.login.presenter.LogInPresenter
+import com.example.dbayproject.mainCategory.presenter.CatPresenter
+import com.example.dbayproject.mainCategory.ui.CategoryFragment
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     lateinit var actionBarToggle: ActionBarDrawerToggle
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+//        Fragment of all Categories
+        addFragment(CategoryFragment())
+
+
         val sharedPreferences = getSharedPreferences("LoginSP", Context.MODE_PRIVATE)
 
 //        binding.uservalue.text =
@@ -63,6 +73,8 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+
     }
 
 
@@ -107,5 +119,17 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+
+    private fun AppCompatActivity.addFragment(fragment: Fragment) {
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction()
+        transaction.add(R.id.container, fragment)
+        transaction.addToBackStack(Tag)
+        transaction.commit()
+    }
+
+    companion object{
+        const val Tag = "FIRST"
     }
 }
