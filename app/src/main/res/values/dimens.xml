@@ -2,5 +2,5 @@
 <resources>
     <dimen name="big_margin">24dp</dimen>
     <dimen name="mid_padding">16dp</dimen>
-    <dimen name="toolbar_height">55dp</dimen>
+    <dimen name="toolbar_height">35dp</dimen>
 </resources>
