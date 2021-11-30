@@ -7,7 +7,7 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.dbayproject.product.model.ProdData
-import com.example.dbayproject.product.model.Product
+import com.example.dbayproject.product.model.ProdInfo
 import com.example.dbayproject.product.ui.ProductsFragment
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -29,8 +29,8 @@ class ProductPresenter(val productsFragment: ProductsFragment, val context: Cont
             {
                     response ->
                 val gson = Gson()
-                val typeInfo = object: TypeToken<Product>(){}
-                var result: Product = gson.fromJson(response, typeInfo.type)
+                val typeInfo = object: TypeToken<ProdInfo>(){}
+                var result: ProdInfo = gson.fromJson(response, typeInfo.type)
 
                 if (!result.error){
                     prodDatas = result.data

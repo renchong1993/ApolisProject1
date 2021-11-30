@@ -9,11 +9,15 @@ import com.example.dbayproject.subCategory.model.SubCatData
 
 class ProductAdapter(val prodDatas: List<ProdData>): RecyclerView.Adapter<ProductViewHolder>() {
 
-    lateinit var onCategorySelected:(SubCatData, Int) -> Unit
-
-    fun setOnCategorySelectedListener(listener: (SubCatData, Int)->Unit){
-        this.onCategorySelected = listener
+    lateinit var addToCartListener:(ProdData, Int) -> Unit
+    fun setAddToCartClickListener(listener: (ProdData, Int)->Unit){
+        this.addToCartListener = listener
     }
+
+//    lateinit var onCategorySelected:(SubCatData, Int) -> Unit
+//    fun setOnCategorySelectedListener(listener: (SubCatData, Int)->Unit){
+//        this.onCategorySelected = listener
+//    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
@@ -24,8 +28,13 @@ class ProductAdapter(val prodDatas: List<ProdData>): RecyclerView.Adapter<Produc
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         holder.bindData(prodDatas[position])
+
+        holder.binding.buttonAddcart.setOnClickListener {
+            if(this::addToCartListener.isInitialized){
+                addToCartListener(prodDatas[position], position)
+            }
+        }
     }
 
     override fun getItemCount() = prodDatas.size
-
 }

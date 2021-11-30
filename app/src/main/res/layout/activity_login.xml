@@ -31,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/email"
+        android:text="ren@ren.com"
         android:inputType="textEmailAddress"
         android:layout_marginTop="@dimen/big_margin"
         style="@style/signup_box"
@@ -41,6 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/password"
+        android:text="12341234"
         style="@style/signup_box"
         app:layout_constraintTop_toBottomOf="@+id/edittext_email"/>
 

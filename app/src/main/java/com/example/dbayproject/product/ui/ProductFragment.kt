@@ -1,18 +1,20 @@
 package com.example.dbayproject.product.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dbayproject.Communicator
-import com.example.dbayproject.R
+import com.example.dbayproject.DatabaseHandler
 import com.example.dbayproject.databinding.FragmentProductBinding
-import com.example.dbayproject.mainCategory.model.CatData
 import com.example.dbayproject.product.model.ProdData
 import com.example.dbayproject.product.presenter.ProductContractor
 import com.example.dbayproject.product.presenter.ProductPresenter
+import com.example.dbayproject.shoppingcart.model.CartProduct
 
 class ProductsFragment() : Fragment(), ProductContractor.View {
 
@@ -42,9 +44,19 @@ class ProductsFragment() : Fragment(), ProductContractor.View {
     }
 
     override fun setData(prodDatas: List<ProdData>) {
+        val databaseHandler = createDataBaseHandler()
         adapter = ProductAdapter(prodDatas)
 
+        adapter.setAddToCartClickListener { prodData, position ->
+            val cartProduct = CartProduct(prodData._id, prodData.productName, prodData.image, prodData.price.toFloat(), 1)
 
+            val res = databaseHandler.insertProduct(cartProduct)
+            if (res>0){
+                Log.i("AddCart", "${prodData.productName} has been added to cart")
+                Toast.makeText(context, "Item ${prodData.productName} has been added to cart", Toast.LENGTH_SHORT).show()
+            }
+
+        }
         binding.recyclerview.adapter = adapter
     }
 
@@ -58,6 +70,11 @@ class ProductsFragment() : Fragment(), ProductContractor.View {
 
     override fun onLoad(boolean: Boolean) {
         TODO("Not yet implemented")
+    }
+
+
+    private fun createDataBaseHandler(): DatabaseHandler {
+        return DatabaseHandler(requireContext())
     }
 
 }

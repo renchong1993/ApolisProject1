@@ -4,15 +4,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dbayproject.R
 import com.example.dbayproject.databinding.ViewHolderCartBinding
 import com.example.dbayproject.product.model.ProdData
+import com.example.dbayproject.shoppingcart.model.CartProduct
 import com.squareup.picasso.Picasso
 
 class CartViewHolder(val binding: ViewHolderCartBinding):RecyclerView.ViewHolder(binding.root) {
-    fun bindData(prodData: ProdData){
+    fun bindData(cartProduct: CartProduct){
         Picasso.get()
-            .load("https://rjtmobile.com/grocery/images/"+prodData.subImage)
+            .load("https://rjtmobile.com/grocery/images/"+cartProduct.Image)
             .placeholder(R.drawable.ic_cart)
             .into(binding.imageviewProdPic)
 
 
+        binding.textviewProdName.text = cartProduct.Name
     }
 }

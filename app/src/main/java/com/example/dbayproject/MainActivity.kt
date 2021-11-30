@@ -182,9 +182,6 @@ class MainActivity : AppCompatActivity(), Communicator {
         val subCatFragment = SubCatFragment()
         subCatFragment.arguments = bundle
 //        binding.root.removeAllViews()
-//
-//        supportFragmentManager.beginTransaction().replace(R.id.container, subCatFragment).commit()
-
 
         val manager = supportFragmentManager
         val transaction = manager.beginTransaction()
@@ -203,6 +200,7 @@ class MainActivity : AppCompatActivity(), Communicator {
 
         val productsFragment = ProductsFragment()
         productsFragment.arguments = bundle
+//        binding.root.removeAllViews()
 
 
         val manager = supportFragmentManager

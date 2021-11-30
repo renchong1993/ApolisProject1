@@ -1,6 +1,5 @@
 package com.example.dbayproject.product.presenter
 
-import com.example.dbayproject.mainCategory.model.CatData
 import com.example.dbayproject.product.model.ProdData
 
 interface ProductContractor {
