@@ -1,16 +1,16 @@
 package com.example.dbayproject.product.ui
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dbayproject.databinding.ViewHolderProductBinding
 import com.example.dbayproject.product.model.ProdData
-import com.example.dbayproject.subCategory.model.SubCatData
 
 class ProductAdapter(val prodDatas: List<ProdData>): RecyclerView.Adapter<ProductViewHolder>() {
 
-    lateinit var addToCartListener:(ProdData, Int) -> Unit
-    fun setAddToCartClickListener(listener: (ProdData, Int)->Unit){
+    lateinit var addToCartListener:(ProdData, Int, String) -> Unit
+    fun setAddToCartClickListener(listener: (ProdData, Int, String)->Unit){
         this.addToCartListener = listener
     }
 
@@ -31,7 +31,8 @@ class ProductAdapter(val prodDatas: List<ProdData>): RecyclerView.Adapter<Produc
 
         holder.binding.buttonAddcart.setOnClickListener {
             if(this::addToCartListener.isInitialized){
-                addToCartListener(prodDatas[position], position)
+                addToCartListener(prodDatas[position], position, holder.binding.edittextProductQty.text.toString())
+                Log.d("PassingCart","${prodDatas[position]}")
             }
         }
     }

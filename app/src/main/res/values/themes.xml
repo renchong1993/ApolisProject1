@@ -32,7 +32,7 @@
         <item name="android:textStyle">italic|bold</item>
     </style>
 
-    <string name="textview_italic_splash">Splash!</string>
+    <string name="textview_italic_splash">DBay!</string>
     <dimen name="regular_textsize_spash">65sp</dimen>
 
     <style name="Theme.DbayProject.Fullscreen" parent="Theme.DbayProject">

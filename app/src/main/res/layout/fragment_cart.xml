@@ -11,14 +11,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="360dp"
         android:id="@+id/recyclerview_cart_product"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginBottom="24dp"/>
 
     <TextView
         android:id="@+id/textview_itemtotal"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -28,7 +28,7 @@
 
     <TextView
         android:id="@+id/textview_itemtotal_price"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         tools:text="$180.00"
@@ -37,7 +37,7 @@
 
     <TextView
         android:id="@+id/textview_tax"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -47,7 +47,7 @@
 
     <TextView
         android:id="@+id/textview_tax_price"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         tools:text="$20.00"
@@ -56,7 +56,7 @@
 
     <TextView
         android:id="@+id/textview_subtotal"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -66,19 +66,13 @@
 
     <TextView
         android:id="@+id/textview_subtotal_price"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
         tools:text="$200.00"
         app:layout_constraintTop_toTopOf="@id/textview_subtotal"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-
-<View
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:id="@+id/view"
-    app:layout_constraintTop_toBottomOf="@+id/textview_subtotal"/>
 
     <TextView
         android:id="@+id/textview_shipping"
@@ -87,13 +81,16 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:text="Shipping Information"
-        app:layout_constraintTop_toBottomOf="@id/view"/>
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/textview_subtotal_price"/>
 
     <EditText
         android:id="@+id/edittext_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Address"
+        android:text="123 Apple St."
+        android:textAllCaps="true"
         app:layout_constraintTop_toBottomOf="@+id/textview_shipping"/>
 
     <EditText
@@ -101,6 +98,8 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:hint="City"
+        android:text="Chicago"
+        android:textAllCaps="true"
         app:layout_constraintTop_toBottomOf="@+id/edittext_address"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -109,6 +108,8 @@
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:hint="State"
+        android:text="IL"
+        android:textAllCaps="true"
         android:layout_marginStart="16dp"
         app:layout_constraintTop_toBottomOf="@+id/edittext_address"
         app:layout_constraintStart_toEndOf="@id/edittext_city"/>
@@ -118,6 +119,8 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:hint="Zipcode"
+        android:text="60555"
+        android:inputType="number"
         app:layout_constraintTop_toBottomOf="@+id/edittext_address"
         app:layout_constraintStart_toEndOf="@id/edittext_state"/>
 
@@ -158,8 +161,9 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ETH"
-            android:id="@+id/radiobtn_ETH"/>
+            android:text="Cash"
+            android:checked="true"
+            android:id="@+id/cash"/>
     </RadioGroup>
 
     <Button

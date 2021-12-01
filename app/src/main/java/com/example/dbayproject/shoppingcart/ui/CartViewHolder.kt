@@ -16,5 +16,7 @@ class CartViewHolder(val binding: ViewHolderCartBinding):RecyclerView.ViewHolder
 
 
         binding.textviewProdName.text = cartProduct.Name
+
+        binding.textviewProductQty.text = cartProduct.QTY.toString()
     }
 }

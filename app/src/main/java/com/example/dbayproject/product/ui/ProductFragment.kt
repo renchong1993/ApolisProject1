@@ -47,9 +47,11 @@ class ProductsFragment() : Fragment(), ProductContractor.View {
         val databaseHandler = createDataBaseHandler()
         adapter = ProductAdapter(prodDatas)
 
-        adapter.setAddToCartClickListener { prodData, position ->
-            val cartProduct = CartProduct(prodData._id, prodData.productName, prodData.image, prodData.price.toFloat(), 1)
+        adapter.setAddToCartClickListener { prodData, position, QTY ->
 
+            val cartProduct = CartProduct(prodData.subId*10+position, prodData.productName, prodData.image, prodData.price.toFloat(), QTY.toInt())
+
+            Log.d("CartProdInfo", "$cartProduct")
             val res = databaseHandler.insertProduct(cartProduct)
             if (res>0){
                 Log.i("AddCart", "${prodData.productName} has been added to cart")

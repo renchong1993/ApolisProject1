@@ -16,6 +16,7 @@ class ProductViewHolder(val binding: ViewHolderProductBinding): RecyclerView.Vie
 
     fun bindData(prodData: ProdData){
         binding.textviewProdName.text = prodData.productName
+        binding.textviewProdPrice.text = "$ ${prodData.price.toString()}"
 
         Picasso.get()
             .load("https://rjtmobile.com/grocery/images/"+prodData.image)

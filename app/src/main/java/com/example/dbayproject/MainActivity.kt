@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity(), Communicator {
         addFragment(CategoryFragment())
 
 
-        val sharedPreferences = getSharedPreferences("LoginSP", Context.MODE_PRIVATE)
+//        val sharedPreferences = getSharedPreferences("LoginSP", Context.MODE_PRIVATE)
 
 //        binding.uservalue.text =
 //            "Welcome to home " + sharedPreferences.getString("firstName", "Default")
@@ -60,13 +60,14 @@ class MainActivity : AppCompatActivity(), Communicator {
 
             when (menuItem.itemId) {
                 R.id.shoppingcart -> {
-//                    startActivity(Intent(this, CartActivity::class.java))
+                    toCart()
                 }
                 R.id.profile -> {
 //                    startActivity(Intent(this, ProfileActivity::class.java))
                 }
                 R.id.shop -> {
                     Toast.makeText(this, "I am SHOP", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, MainActivity::class.java))
                 }
                 R.id.orderhistory -> {
                     Toast.makeText(this, "I am OrderHistory", Toast.LENGTH_SHORT).show()
@@ -79,13 +80,15 @@ class MainActivity : AppCompatActivity(), Communicator {
         }
 
         binding.buttonCart.setOnClickListener {
-            val cartFragment = CartFragment()
-            val manager = supportFragmentManager
-            val transaction = manager.beginTransaction()
+//            val cartFragment = CartFragment()
+//            val manager = supportFragmentManager
+//            val transaction = manager.beginTransaction()
+//
+//            transaction.replace(R.id.container, cartFragment)
+//            transaction.addToBackStack(null)
+//            transaction.commit()
 
-            transaction.replace(R.id.container, cartFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
+            toCart()
         }
 
         binding.textviewDbayTitle.setOnClickListener {
@@ -209,5 +212,29 @@ class MainActivity : AppCompatActivity(), Communicator {
         transaction.addToBackStack(null)
         transaction.commit()
     }
+
+    fun toCart(){
+
+        val sharedPreferences: SharedPreferences = this.getSharedPreferences(
+            "LoginSP",
+            Context.MODE_PRIVATE)
+
+        val cartFragment = CartFragment(sharedPreferences)
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction()
+
+        transaction.replace(R.id.container, cartFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
+//    fun getUserId(): String{
+//        val sharedPreferences: SharedPreferences = this.getSharedPreferences(
+//            "LoginSP",
+//            Context.MODE_PRIVATE)
+//        val userId = sharedPreferences.getString("user_id", " ")
+//
+//        return userId!!
+//    }
 
 }

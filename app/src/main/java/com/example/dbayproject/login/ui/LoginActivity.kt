@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.example.dbayproject.MainActivity
 import com.example.dbayproject.R
 import com.example.dbayproject.databinding.ActivityLoginBinding
@@ -41,6 +42,10 @@ class LoginActivity : AppCompatActivity(), LogInContract.View {
 
             buttonRegister.setOnClickListener {
                 startActivity(Intent(LogInUtils.context, RegisterActivity::class.java))
+            }
+
+            textviewForgetPW.setOnClickListener {
+                Toast.makeText(baseContext, "Sad !  :(", Toast.LENGTH_SHORT).show()
             }
         }
     }
