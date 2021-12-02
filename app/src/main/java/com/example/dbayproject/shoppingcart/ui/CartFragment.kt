@@ -2,6 +2,7 @@ package com.example.dbayproject.shoppingcart.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -95,7 +96,6 @@ class CartFragment(private val sharedPreferences: SharedPreferences) : Fragment(
                 itemList.add(item)
             }
 
-
             val orderData = Checkout(
                 orderSummary,
                 payment,
@@ -139,6 +139,8 @@ class CartFragment(private val sharedPreferences: SharedPreferences) : Fragment(
         cart.removeAll(cart)
         adapter.notifyDataSetChanged()
         updatePrice()
+        activity?.startActivity(Intent(requireActivity(), MainActivity::class.java))
+
     }
 
 

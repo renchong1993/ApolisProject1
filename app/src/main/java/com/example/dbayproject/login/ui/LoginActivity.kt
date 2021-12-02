@@ -52,17 +52,14 @@ class LoginActivity : AppCompatActivity(), LogInContract.View {
 
 
 
-
     override fun toMainPage() {
         startActivity(Intent(this, MainActivity::class.java))
     }
-
 
     override fun showError() {
         binding.textviewErrorMSG.visibility = View.VISIBLE
         binding.textviewErrorMSG.text = "Error. Credential error, please retry"
     }
-
 
     override fun showProgress(){
         binding.progressBar.visibility = View.VISIBLE

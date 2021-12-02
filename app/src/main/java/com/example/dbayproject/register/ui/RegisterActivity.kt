@@ -53,12 +53,10 @@ class RegisterActivity : AppCompatActivity(), RegisterContract.View {
         startActivity(Intent(this, LoginActivity::class.java))
     }
 
-
     override fun showError(error: String) {
         binding.textviewErrorMSG.visibility = View.VISIBLE
         binding.textviewErrorMSG.text = error
     }
-
 
     override fun showProgress(){
         binding.progressBar.visibility = View.VISIBLE

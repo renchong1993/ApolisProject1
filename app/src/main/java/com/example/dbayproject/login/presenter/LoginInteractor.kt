@@ -8,6 +8,7 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.dbayproject.login.model.User
 import com.example.dbayproject.login.model.UserX
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -41,15 +42,15 @@ class LoginInteractor {
             url,
             params,
             {
-                val typeToken = object: TypeToken<UserX>(){}
+                val typeToken = object: TypeToken<User>(){}
                 val gson = Gson()
-                val user = gson.fromJson<UserX>(it.toString(), typeToken.type)
+                val user = gson.fromJson<User>(it.toString(), typeToken.type)
 
 
-                editor.putString("mobile", user.mobile)
-                editor.putString("user_id", user._id)
-                editor.putString("firstName", user.firstName)
-                editor.putString("email", user.email)
+                editor.putString("mobile", user.user.mobile)
+                editor.putString("user_id", user.user._id)
+                editor.putString("firstName", user.user.firstName)
+                editor.putString("email", user.user.email)
                 editor.putBoolean("is_loggedIn", true)
                 editor.apply()
 

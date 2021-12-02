@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity(), Communicator {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        Fragment of all Categories
         addFragment(CategoryFragment())
 
 
@@ -55,6 +54,12 @@ class MainActivity : AppCompatActivity(), Communicator {
         actionBarToggle.syncState()
 
         binding.navView.setNavigationItemSelectedListener { menuItem ->
+
+            val sharedPreferences: SharedPreferences = this.getSharedPreferences(
+                "LoginSP",
+                Context.MODE_PRIVATE)
+            val userName = sharedPreferences.getString("firstName", "Dear User")
+
             menuItem.isCheckable = true
             binding.drawerLayout.closeDrawers()
 
@@ -63,7 +68,7 @@ class MainActivity : AppCompatActivity(), Communicator {
                     toCart()
                 }
                 R.id.profile -> {
-//                    startActivity(Intent(this, ProfileActivity::class.java))
+                    Toast.makeText(this, "Hello, $userName! ;)", Toast.LENGTH_SHORT).show()
                 }
                 R.id.shop -> {
                     Toast.makeText(this, "I am SHOP", Toast.LENGTH_SHORT).show()
@@ -80,14 +85,6 @@ class MainActivity : AppCompatActivity(), Communicator {
         }
 
         binding.buttonCart.setOnClickListener {
-//            val cartFragment = CartFragment()
-//            val manager = supportFragmentManager
-//            val transaction = manager.beginTransaction()
-//
-//            transaction.replace(R.id.container, cartFragment)
-//            transaction.addToBackStack(null)
-//            transaction.commit()
-
             toCart()
         }
 
@@ -101,13 +98,19 @@ class MainActivity : AppCompatActivity(), Communicator {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        val sharedPreferences: SharedPreferences = this.getSharedPreferences(
+            "LoginSP",
+            Context.MODE_PRIVATE)
+        val userName = sharedPreferences.getString("firstName", "Dear User")
+
         when (item.itemId) {
             R.id.shoppingcart -> {
 //                    startActivity(Intent(this, CartActivity::class.java))
                 return true
             }
             R.id.profile -> {
-//                    startActivity(Intent(this, ProfileActivity::class.java))
+                Toast.makeText(this, "Hello, $userName! ;)", Toast.LENGTH_SHORT).show()
                 return true
             }
             R.id.shop -> {
@@ -134,6 +137,7 @@ class MainActivity : AppCompatActivity(), Communicator {
         return true
     }
 
+
     override fun onBackPressed() {
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
@@ -142,8 +146,8 @@ class MainActivity : AppCompatActivity(), Communicator {
         }
     }
 
-    private fun logout() {
 
+    private fun logout() {
         val sharedPreferences: SharedPreferences = this.getSharedPreferences(
             "LoginSP",
             Context.MODE_PRIVATE)
@@ -184,7 +188,6 @@ class MainActivity : AppCompatActivity(), Communicator {
 
         val subCatFragment = SubCatFragment()
         subCatFragment.arguments = bundle
-//        binding.root.removeAllViews()
 
         val manager = supportFragmentManager
         val transaction = manager.beginTransaction()
@@ -203,8 +206,6 @@ class MainActivity : AppCompatActivity(), Communicator {
 
         val productsFragment = ProductsFragment()
         productsFragment.arguments = bundle
-//        binding.root.removeAllViews()
-
 
         val manager = supportFragmentManager
         val transaction = manager.beginTransaction()
@@ -227,14 +228,5 @@ class MainActivity : AppCompatActivity(), Communicator {
         transaction.addToBackStack(null)
         transaction.commit()
     }
-
-//    fun getUserId(): String{
-//        val sharedPreferences: SharedPreferences = this.getSharedPreferences(
-//            "LoginSP",
-//            Context.MODE_PRIVATE)
-//        val userId = sharedPreferences.getString("user_id", " ")
-//
-//        return userId!!
-//    }
 
 }

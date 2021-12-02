@@ -29,7 +29,6 @@ class SubCatFragment() : Fragment(), SubCatContract.View {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
 
         binding = FragmentSubCatBinding.inflate(inflater, container, false)
         binding.recyclerview.layoutManager = LinearLayoutManager(activity)
@@ -43,7 +42,6 @@ class SubCatFragment() : Fragment(), SubCatContract.View {
 
     override fun setData(subCatDatas: List<SubCatData>) {
         adapter = SubCatAdapter(subCatDatas)
-//        binding.recyclerview.adapter = adapter
 
         adapter.setOnCategorySelectedListener { subCatData, position ->
             communicator.toProd(subCatData)
